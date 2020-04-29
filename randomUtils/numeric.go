@@ -12,6 +12,7 @@ var (
 	numberRandLock sync.Mutex
 )
 
+//Generate a random number sequence of a given length
 func NumericSequence(length int) string {
 	if length <= 0 {
 		return ""
