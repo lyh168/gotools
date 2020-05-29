@@ -10,3 +10,12 @@ func IsExist(filepath string) bool {
 	}
 	return !os.IsNotExist(err)
 }
+
+//IsDir returns a boolean indicating whether s file id a directory.
+func IsDir(filepath string) bool {
+	f, err := os.Stat(filepath)
+	if err != nil {
+		return false
+	}
+	return f.IsDir()
+}
