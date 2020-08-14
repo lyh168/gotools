@@ -1,4 +1,4 @@
-module github.com/yacen/goutils
+module github.com/yacen/gotools
 
 go 1.14
 
