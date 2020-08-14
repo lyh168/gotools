@@ -1,6 +1,6 @@
-module github.com/yacen/gotools
+module github.com/yacen/goutils
 
-go 1.12
+go 1.14
 
 require (
 	github.com/json-iterator/go v1.1.10
