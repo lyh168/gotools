@@ -1,5 +1,6 @@
-package sliceUtils
+package sliceutils
 
 const (
-	INDEX_NOT_FOUND = -1
+	// IndexNotFound means that no elements were found
+	IndexNotFound = -1
 )
