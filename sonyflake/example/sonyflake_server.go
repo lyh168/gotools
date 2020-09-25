@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/sony/sonyflake"
-	"github.com/sony/sonyflake/awsutil"
+	"github.com/yacen/gotools/sonyflake"
+	"github.com/yacen/gotools/sonyflake/awsutil"
 )
 
 var sf *sonyflake.Sonyflake
