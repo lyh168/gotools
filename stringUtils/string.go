@@ -1,4 +1,4 @@
-package stringUtils
+package stringutils
 
 import (
 	"strconv"
