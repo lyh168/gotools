@@ -17,7 +17,7 @@ Package idgenerator contains several Span and Trace ID generators which can be
 used by the Zipkin tracer. Additional third party generators can be plugged in
 if they adhere to the IDGenerator interface.
 */
-package randomUtils
+package randomutils
 
 import (
 	"errors"

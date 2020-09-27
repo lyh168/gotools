@@ -1,5 +1,5 @@
 // Package requestUtils 提供Tigo框架自带的http client功能，此包包含发送http请求的方法。
-package requestUtils
+package requestutils
 
 import (
 	"bytes"
