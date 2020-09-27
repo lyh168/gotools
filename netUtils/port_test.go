@@ -1,4 +1,4 @@
-package netUtils
+package netutils
 
 import "testing"
 

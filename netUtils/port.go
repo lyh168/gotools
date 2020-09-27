@@ -1,7 +1,6 @@
-package netUtils
+package netutils
 
 import (
-	"fmt"
 	"net"
 )
 
