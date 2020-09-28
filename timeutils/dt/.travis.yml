@@ -1,0 +1,10 @@
+language: go
+sudo: required
+go:
+  - "1.13"
+
+script:
+  - ./test.sh
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
