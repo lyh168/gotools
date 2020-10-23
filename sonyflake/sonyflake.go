@@ -8,6 +8,7 @@ package sonyflake
 
 import (
 	"errors"
+	"fmt"
 	"net"
 	"sync"
 	"time"
@@ -54,13 +55,13 @@ type Sonyflake struct {
 // - Settings.StartTime is ahead of the current time.
 // - Settings.MachineID returns an error.
 // - Settings.CheckMachineID returns false.
-func NewSonyflake(st Settings) *Sonyflake {
+func NewSonyflake(st Settings) (*Sonyflake, error) {
 	sf := new(Sonyflake)
 	sf.mutex = new(sync.Mutex)
 	sf.sequence = uint16(1<<BitLenSequence - 1)
 
 	if st.StartTime.After(time.Now()) {
-		return nil
+		return nil, errors.New("start time is after now")
 	}
 	if st.StartTime.IsZero() {
 		sf.startTime = toSonyflakeTime(time.Date(2014, 9, 1, 0, 0, 0, 0, time.UTC))
@@ -75,10 +76,10 @@ func NewSonyflake(st Settings) *Sonyflake {
 		sf.machineID, err = st.MachineID()
 	}
 	if err != nil || (st.CheckMachineID != nil && !st.CheckMachineID(sf.machineID)) {
-		return nil
+		return nil, fmt.Errorf("get machine id, %w", err)
 	}
 
-	return sf
+	return sf, nil
 }
 
 // NextID generates a next unique ID.

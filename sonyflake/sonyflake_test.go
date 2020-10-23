@@ -16,7 +16,7 @@ func init() {
 	var st Settings
 	st.StartTime = time.Now()
 
-	sf = NewSonyflake(st)
+	sf, _ = NewSonyflake(st)
 	if sf == nil {
 		panic("sonyflake not created")
 	}
@@ -151,7 +151,7 @@ func TestSonyflakeInParallel(t *testing.T) {
 func TestNilSonyflake(t *testing.T) {
 	var startInFuture Settings
 	startInFuture.StartTime = time.Now().Add(time.Duration(1) * time.Minute)
-	if NewSonyflake(startInFuture) != nil {
+	if _, err := NewSonyflake(startInFuture); err != nil {
 		t.Errorf("sonyflake starting in the future")
 	}
 
@@ -159,7 +159,7 @@ func TestNilSonyflake(t *testing.T) {
 	noMachineID.MachineID = func() (uint16, error) {
 		return 0, fmt.Errorf("no machine id")
 	}
-	if NewSonyflake(noMachineID) != nil {
+	if _, err := NewSonyflake(noMachineID); err != nil {
 		t.Errorf("sonyflake with no machine id")
 	}
 
@@ -167,7 +167,7 @@ func TestNilSonyflake(t *testing.T) {
 	invalidMachineID.CheckMachineID = func(uint16) bool {
 		return false
 	}
-	if NewSonyflake(invalidMachineID) != nil {
+	if _, err := NewSonyflake(invalidMachineID); err != nil {
 		t.Errorf("sonyflake with invalid machine id")
 	}
 }
