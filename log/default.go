@@ -1,7 +1,4 @@
-package logger
-
-import (
-)
+package log
 
 var l *Logger
 
@@ -21,4 +18,10 @@ func InitLogger(config Config) error {
 		return err
 	}
 	return nil
+}
+
+func WithTraceID(traceID string) *Logger {
+	logger := l.Clone()
+	l.SetTraceID(traceID)
+	return logger
 }

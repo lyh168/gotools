@@ -1,4 +1,4 @@
-package logger
+package log
 
 import (
 	"go.uber.org/zap"
@@ -92,10 +92,10 @@ func (this *Logger) Fatalf(format string, v ...interface{}) {
 	this.sl.Fatalf(format, v...)
 }
 
-func (this *Logger) SetTraceID(str string) {
-	if len(str) > 0 {
-		this.traceID = str
-		this.sl.With(zap.String("traceId", this.traceID))
+func (this *Logger) SetTraceID(traceID string) {
+	if len(traceID) > 0 {
+		this.traceID = traceID
+		this.sl.With(zap.String("TraceID", this.traceID))
 	}
 }
 
