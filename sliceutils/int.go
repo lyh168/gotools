@@ -15,10 +15,10 @@ func Int32SliceJoin(elems []int32, sep string) string {
 	}
 	var bs []byte
 
-	strconv.AppendInt(bs, int64(elems[0]), 10)
+	bs = strconv.AppendInt(bs, int64(elems[0]), 10)
 	for _, s := range elems[1:] {
 		bs = append(bs, sep...)
-		strconv.AppendInt(bs, int64(s), 10)
+		bs = strconv.AppendInt(bs, int64(s), 10)
 	}
 	return string(bs)
 }
